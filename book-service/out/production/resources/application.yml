@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    url: jdbc:sqlserver://localhost\SGH512QY81:1433;database=BookDB;
+    username: sa
+    password: Chanhhung96
+    initialize: false
+  application:
+    name: book-service
+eureka:
+  client:
+    service-url:
+      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
+server:
+  port: 8082
