@@ -28,8 +28,7 @@ public class UserServiceImpl implements UserDetailsService {
 
 		if (user != null)
 		{
-		// Remember that Spring needs roles to be in this format: "ROLE_" + userRole (i.e. "ROLE_ADMIN")
-		// So, we need to set it to that format, so we can verify and compare roles (i.e. hasRole("ADMIN")).
+		// Roles in this format: "ROLE_" + userRole (i.e. "ROLE_ADMIN")
 			List<GrantedAuthority> grantedAuthorities = AuthorityUtils
 					.commaSeparatedStringToAuthorityList("ROLE_" + user.getRole().toUpperCase());
 
@@ -37,7 +36,7 @@ public class UserServiceImpl implements UserDetailsService {
 			// And used by auth manager to verify and check user authentication.
 			return new User(user.getName(), encoder.encode(user.getPassword()), grantedAuthorities);
 		}
-		// If user not found. Throw this exception.
+		// If user not found. Throw exception.
 		throw new UsernameNotFoundException("Username: " + username + " not found");
 	}
 }

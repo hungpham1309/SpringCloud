@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 public interface BookRepository extends CrudRepository<Book, Integer> {
 
 	@Query(
-			value = "SELECT * FROM Book ",
+			value = "SELECT * FROM book ",
 			nativeQuery = true
 	)
 	List<Book> getAllBook();

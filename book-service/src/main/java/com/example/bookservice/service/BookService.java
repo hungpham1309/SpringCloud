@@ -3,6 +3,7 @@ package com.example.bookservice.service;
 import com.example.bookservice.model.Book;
 import com.example.bookservice.repository.BookRepository;
 import java.util.List;
+import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,6 +12,9 @@ public class BookService {
 
 	@Autowired
 	private BookRepository bookRepository;
+
+	@Autowired
+	DataSource dataSource;
 
 	public List<Book> getAllBooks() {
 		return bookRepository.getAllBook();

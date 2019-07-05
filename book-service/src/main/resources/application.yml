@@ -1,10 +1,15 @@
 spring:
+  flyway:
+    schemas: public
+    baseline-on-migrate: true
+    baseline-version: 0
+  jpa:
+    database: POSTGRESQL
   datasource:
-    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost\SGH512QY81:1433;database=BookDB;
-    username: sa
-    password: Chanhhung96
-    initialize: false
+    url: jdbc:postgresql://localhost:5432/BookDB
+    username: postgres
+    password: chanhhung96
+    platform: postgres
   application:
     name: book-service
 eureka:
@@ -13,3 +18,4 @@ eureka:
       default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
 server:
   port: 8082
+

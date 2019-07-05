@@ -1,10 +1,15 @@
 spring:
+  flyway:
+    schemas: public
+    baseline-on-migrate: true
+    baseline-version: 0
+  jpa:
+    database: POSTGRESQL
   datasource:
-    driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
-    url: jdbc:sqlserver://localhost:1433;database=UserDB
-    username: sa
-    password: Chanhhung96
-    initialize: false
+    url: jdbc:postgresql://localhost:5432/UserDB
+    username: postgres
+    password: chanhhung96
+    platform: postgres
   application:
     name: auth-service
 eureka:
