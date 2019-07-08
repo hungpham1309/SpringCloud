@@ -2,7 +2,9 @@ package com.example.authservice.service.impl;
 
 import com.example.authservice.model.AppUser;
 import com.example.authservice.repository.UserRepository;
+
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -16,27 +18,26 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImpl implements UserDetailsService {
 
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+    @Autowired
+    private BCryptPasswordEncoder encoder;
 
-	@Autowired
-	private UserRepository userRepository;
+    @Autowired
+    private UserRepository userRepository;
 
-	@Override
-	public UserDetails loadUserByUsername(String username) {
-		AppUser user = userRepository.findByName(username);
+    @Override
+    public UserDetails loadUserByUsername(String username) {
+        AppUser user = userRepository.findByName(username);
 
-		if (user != null)
-		{
-		// Roles in this format: "ROLE_" + userRole (i.e. "ROLE_ADMIN")
-			List<GrantedAuthority> grantedAuthorities = AuthorityUtils
-					.commaSeparatedStringToAuthorityList("ROLE_" + user.getRole().toUpperCase());
+        if (user != null) {
+            // Roles in this format: "ROLE_" + userRole (i.e. "ROLE_ADMIN")
+            List<GrantedAuthority> grantedAuthorities = AuthorityUtils
+                    .commaSeparatedStringToAuthorityList("ROLE_" + user.getRole().toUpperCase());
 
-			// The "User" class is provided by Spring and represents a model class for user to be returned by UserDetailsService
-			// And used by auth manager to verify and check user authentication.
-			return new User(user.getName(), encoder.encode(user.getPassword()), grantedAuthorities);
-		}
-		// If user not found. Throw exception.
-		throw new UsernameNotFoundException("Username: " + username + " not found");
-	}
+            // The "User" class is provided by Spring and represents a model class for user to be returned by UserDetailsService
+            // And used by auth manager to verify and check user authentication.
+            return new User(user.getName(), encoder.encode(user.getPassword()), grantedAuthorities);
+        }
+        // If user not found. Throw exception.
+        throw new UsernameNotFoundException("Username: " + username + " not found");
+    }
 }

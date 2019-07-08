@@ -10,8 +10,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 @EnableZuulProxy
 public class ZullGatewayApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(ZullGatewayApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(ZullGatewayApplication.class, args);
+    }
 
 }
