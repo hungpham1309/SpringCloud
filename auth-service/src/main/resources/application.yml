@@ -12,10 +12,6 @@ spring:
     platform: postgres
   application:
     name: auth-service
-eureka:
-  client:
-    service-url:
-      default-zone: ${EUREKA_URI:http://localhost:8761/eureka}
 server:
   port: 8083
 
