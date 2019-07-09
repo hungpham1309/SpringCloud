@@ -3,4 +3,4 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-rootProject.name = 'zull-gateway'
+rootProject.name = 'zuul-gateway'
